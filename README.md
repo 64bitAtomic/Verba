@@ -82,5 +82,5 @@ npm install</code></pre>
 <hr>
 
 <p align="center">
-    Made with <span style="font-size:1.2em;">❤️</span> by <strong>Your Name</strong>
+    Made with <span style="font-size:1.2em;"></span> by <strong>Mohd Zaid</strong>
 </p>

@@ -36,6 +36,9 @@ app.get("/about",(req,res)=>{
 
 app.use(blogRouter);
 app.use(authRouter);
+app.use((req,res)=>{
+    res.status(404).render("pnf");
+})
 
 connectToMongoDB(process.env.MONGO_URL);
 app.listen(PORT,()=>{
