@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <%- include('partials/head') %>
+    <title>Verba - Sign In</title>
+</head>
+<body class="flex flex-col min-h-screen">
+    <%- include('partials/nav') %>
+
+<!-- Main Content for Signup Form -->
+    <main class="flex-grow flex items-center justify-center p-4 mt-6">
+        <div class="w-full max-w-md bg-zinc-900 p-8 rounded-xl shadow-lg">
+            <h2 class="text-4xl font-bold text-white mb-6 text-center">Sign In</h2>
+            <form action="/signin" method="POST" class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                    <input type="email" id="email" name="email" placeholder="123@eample.com" required
+                        class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-300">
+                </div>
+
+                <!-- Password Field with Toggle -->
+                <div class="relative">
+                    <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                    <input type="password" id="password" name="password" required
+                        class="mt-1 block w-full pr-10 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-300">
+                    <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 top-6 flex items-center px-2 text-gray-400 focus:outline-none">
+                        <!-- Eye icon for show password -->
+                        <svg id="eye-open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <!-- Eye-slash icon for hide password -->
+                        <svg id="eye-closed" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7 1.274-4.057 5.064-7 9.542-7a10.05 10.05 0 011.875.175m-6.843 3.425a3 3 0 106.326 0 3 3 0 00-6.326 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 19L5 5"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Sign Up Button -->
+                <button type="submit"
+                    class="w-full bg-zinc-600 hover:bg-zinc-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                    Sign Up
+                </button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-gray-400">
+                Already have an account? <a href="/signup" class="text-white hover:underline">Sign up here</a>.
+            </p>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+
+</body>
+</html>

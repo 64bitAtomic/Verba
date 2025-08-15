@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head') %>
+<body class="bg-black">
+    <!-- Navbar -->
+    <nav class="bg-zinc-900 shadow-lg">
+        <div class="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
+            <!-- Left side: Blog Title and Mobile Menu Button -->
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-3xl font-bold text-white transition duration-300 ease-in-out hover:text-indigo-400">
+                    Verba
+                </a>
+                <!-- Mobile menu button (hidden on desktop) -->
+                <button id="menu-button" class="text-gray-300 md:hidden focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Right side: User Info and Buttons -->
+            <div id="nav-menu" class="hidden md:flex md:items-center md:space-x-4 mt-4 md:mt-0">
+                <!-- Links (You can add more navigation links here) -->
+                <a href="/add-new" class="block text-gray-300 hover:text-white transition duration-300 ease-in-out px-3">Add Blog</a>
+                <a href="/blogs/myblogs" class="block text-gray-300 hover:text-white transition duration-300 ease-in-out px-3">My Blog</a>
+                <a href="/about" class="block text-gray-300 hover:text-white transition duration-300 ease-in-out px-3">About</a>
+                
+                <!-- This section conditionally shows user info or sign-in buttons -->
+                <div id="auth-buttons" class="hidden">
+                    <!-- Sign-in/Sign-up buttons for a guest user -->
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        Sign In
+                    </button>
+                    <button class="bg-gray-700 hover:bg-gray-600 text-gray-300 font-medium py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 ml-2">
+                        Sign Up
+                    </button>
+                </div>
+
+                <% if(locals.user){%>
+                 <div id="user-profile" class="hidden items-center space-x-4">
+  <!-- User profile for a logged-in user -->
+  <span class="flex items-center text-gray-300 text-lg">
+    <img class="w-15 h-10 rounded-full mr-2  border-gray-500" 
+         src="/img/user.png" 
+         alt="Profile avatar">
+    Hi, <span class="font-semibold text-white ml-1"><%= user.username %></span>
+  </span>
+
+  <a href="/logout" 
+     class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 
+            rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+    Logout
+  </a>
+</div>
+
+                <% } else { %>
+                              <a href="/signin" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"> Signin </a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <% if(locals.error){%>
+ <div class="container mt-4">
+      <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+  </svg>
+  <span class="sr-only">Info</span>
+  <div> <%= locals.error %>
+  </div>
+</div>
+ </div>
+    <% } %> 
+    <!-- Simple JS for mobile menu toggle and demonstrating user state -->
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const navMenu = document.getElementById('nav-menu');
+        const authButtons = document.getElementById('auth-buttons');
+        const userProfile = document.getElementById('user-profile');
+
+        // Mobile menu toggle
+        menuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // This is a simple function to simulate a logged-in user state.
+        // In a real application, you would determine this state from your backend.
+        function checkUserStatus(isLoggedIn) {
+            if (isLoggedIn) {
+                authButtons.classList.add('hidden');
+                userProfile.classList.remove('hidden');
+                userProfile.classList.add('flex');
+            } else {
+                authButtons.classList.remove('hidden');
+                userProfile.classList.add('hidden');
+            }
+        }
+
+        // To see the "Sign In" buttons, call with false:
+        // checkUserStatus(false);
+        
+        // To see the "User Profile" info, call with true:
+        checkUserStatus(true);
+    </script>
+
+</body>
+</html>

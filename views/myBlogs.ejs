@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="min-h-screen">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %>'s Blogs</title>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        <%- include('partials/nav') %>
+
+        <div class="max-w-6xl mx-auto p-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <% if (blogs.length === 0) { %>
+                <div class="text-center py-10 col-span-full">
+                    <p class="text-gray-400 text-lg mb-4">No blogs yet.</p>
+                    <a href="/add-new" 
+                       class="inline-block bg-zinc-600 hover:bg-zinc-700 text-white px-6 py-3 rounded-lg text-lg">
+                        Add Blog
+                    </a>
+                </div>
+            <% } %>
+
+            <% blogs.forEach(blog => { %>
+                <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
+                    
+                    <!-- Blog Image -->
+                    <img src="/<%= blog.coverImage %>" alt="<%= blog.title %>" class="w-full h-48 object-cover">
+                    
+                    <div class="p-4">
+                        <!-- Blog Title -->
+                        <h2 class="text-xl font-semibold mb-2"><%= blog.title %></h2>
+                        
+                        <!-- Blog Body Preview -->
+                        <p class="text-gray-300 text-sm mb-4">
+                            <%= blog.body.length > 100 ? blog.body.substring(0, 100) + '...' : blog.body %>
+                        </p>
+
+                        <!-- Created Date -->
+                        <p class="text-xs text-gray-500 mb-3">
+                            Posted on <%= blog.createdAt.toDateString() %>
+                        </p>
+
+                        <div class="flex justify-between items-center mt-4">
+                            <!-- Read More -->
+                            <a href="/blog/<%= blog._id %>" 
+                               class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
+                                Read More
+                            </a>
+
+                            <!-- Delete Button -->
+                            <form action="/blog/delete/<%= blog._id %>" method="POST" 
+                                  onsubmit="return confirm('Are you sure you want to delete this blog?')">
+                                <button type="submit" 
+                                        class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm">
+                                   <i class="fas fa-trash text-xl"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+</body>
+</html>

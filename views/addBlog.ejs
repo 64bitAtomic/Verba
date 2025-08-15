@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Verba - Add Blog</title>
+</head>
+<body class="bg-black min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <%- include('partials/nav') %>
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        <form action="/add-new" method="POST" enctype="multipart/form-data" 
+              class="max-w-2xl mx-auto mt-10 bg-zinc-900 p-6 rounded-lg shadow-lg">
+            
+            <!-- Blog Title -->
+            <div class="mb-5">
+                <label for="title" class="block mb-2 text-lg font-medium text-white">Blog Title</label>
+                <input type="text" name="title" id="title" placeholder="Enter blog title"
+                    class="block w-full p-3 text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Blog Content -->
+            <div class="mb-5">
+                <label for="content" class="block mb-2 text-lg font-medium text-white">Content</label>
+                <textarea name="body" id="content" rows="6" placeholder="Write your blog here..."
+                    class="block w-full p-3 text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"></textarea>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-5">
+                <label for="image" class="block mb-2 text-lg font-medium text-white">Upload Image</label>
+                <input type="file" name="coverImage" id="image"
+                    class="block w-full text-white border border-gray-600 rounded-lg bg-gray-800 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-zinc-600 file:text-white hover:file:bg-zinc-700">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+                class="text-white bg-zinc-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-full sm:w-auto px-6 py-3 text-center">
+                Publish Blog
+            </button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+</body>
+</html>

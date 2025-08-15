@@ -1,0 +1,39 @@
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verba - Home Page</title>
+</head>
+<body class="bg-black text-white h-full flex flex-col">
+
+    <%- include('partials/nav') %>
+
+    <!-- Main Content should grow to fill space -->
+    <main class="flex-grow">
+        <div class="max-w-6xl mx-auto p-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <% blogs.forEach(blog => { %>
+                <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
+                    <img src="/<%= blog.coverImage %>" alt="<%= blog.title %>" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2"><%= blog.title %></h2>
+                        <p class="text-gray-300 text-sm mb-4">
+                            <%= blog.body.length > 100 ? blog.body.substring(0, 100) + '...' : blog.body %>
+                        </p>
+                        <p class="text-xs text-gray-500 mb-3">
+                            Posted on <%= blog.createdAt.toDateString() %>
+                        </p>
+                        <a href="/blog/<%= blog._id %>" 
+                           class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+</body>
+</html>

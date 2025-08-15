@@ -1,0 +1,87 @@
+<html lang="en" class="h-full">
+<head>
+    <title>Verba - About</title>
+</head>
+<body class="bg-black text-white h-full flex flex-col">
+
+    <%- include('partials/nav') %>
+
+    <main class="flex-grow">
+        <div class="max-w-5xl mx-auto p-6">
+            <h1 class="text-5xl font-bold text-center mb-8">About Verba</h1>
+
+            <!-- About Description -->
+            <div class="bg-zinc-900 p-8 rounded-xl shadow-lg mb-12">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    <i class="fas fa-blog text-blue-500 mr-2"></i>
+                    Verba is a blogging platform where people can share their thoughts with the world. 
+                    Users can create posts with a <span class="font-semibold">title</span>, <span class="font-semibold">body</span>, and <span class="font-semibold">image</span>. 
+                    Others can read and comment on these posts, engaging in meaningful conversations.
+                </p>
+            </div>
+
+            <!-- Features Section -->
+            <h2 class="text-3xl font-bold mb-6 text-center">Features</h2>
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-pencil-alt text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Create Blogs</h3>
+                    <p class="text-gray-300 text-sm">
+                        Share your thoughts easily by creating visually appealing blog posts with images and rich content.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-comments text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Comment & Engage</h3>
+                    <p class="text-gray-300 text-sm">
+                        Users can comment on posts and engage in conversations, creating a community around ideas.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-image text-4xl text-pink-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Add Images</h3>
+                    <p class="text-gray-300 text-sm">
+                        Enhance your posts with images to make your stories more engaging and visually attractive.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-users text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Community</h3>
+                    <p class="text-gray-300 text-sm">
+                        Join a community of bloggers and readers who share ideas, feedback, and inspiration.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-share-alt text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Share Posts</h3>
+                    <p class="text-gray-300 text-sm">
+                        Share your favorite blogs with friends or on social media to spread knowledge and ideas.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-zinc-900 p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition duration-300">
+                    <i class="fas fa-heart text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Like & Appreciate</h3>
+                    <p class="text-gray-300 text-sm">
+                        Show appreciation for posts you enjoy and motivate creators to keep sharing their ideas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+
+</body>
+</html>
